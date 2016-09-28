@@ -1,0 +1,142 @@
+T-SQL :
+
+Créer une BD : 
+	- Aller sur SQL Server objetct explorer
+	- Ajouter une nouvelle table
+
+Créer une table :
+	- Aller dans table et mettre créer new table
+	- Schéma type : CREATE TABLE [dbo].[NomDeLaTable]
+			(
+				[NomAttribut] VAR (NOT NULL pour pas de null) (PRIMARY KEY si ID),
+				...
+			)
+			Type :  string = varchar
+				int = int
+				long = bigint
+				date = date
+	- Foreign key :
+			- Aller sur foreign keys et ajouter foreign key
+			- Changer le ToTable avec le nom de la classe à atteindre
+			- Syntaxe : FOREIGN KEY (CourseID) REFERENCES [Course]([Id]) , nom de la foreign key = CourseID , vers la table Course, le ID
+
+			[StudentId] INT NOT NULL,
+			[CourseID] BIGINT NOT NULL, 
+    			FOREIGN KEY (StudentId) REFERENCES [Student]([Id]), 
+    			FOREIGN KEY (CourseID) REFERENCES [Course]([Id]) 
+
+Insérer dans une table :
+	- Aller sur la table et mettre view data et on peut entrer les données
+	- Date = AAAA-MM-DD
+
+Code :
+	insert into Student values (1,'1994-05-30','Damien Jacques','Rien');
+	insert into Student values (2,'1996-07-12','Antoni Maniscalco','Grand');
+
+	insert into Course values (1,'Math');
+	insert into Course values (2,'Français');
+
+	insert into StudentCourse values (1,1);
+	insert into StudentCourse values (1,2);
+	insert into StudentCourse values (2,2);
+
+
+Pour faire des requêtes :
+	- Aller sur le nom de la BD et faire new query
+
+Pour ouvrir le connection dans un projet c#
+	- il faut instancier avec SqlConnection et aller chercher dans les propriété de la BD le connection string
+	Syntaxe : SqlConnection connection = new SqlConnection(le connection string)
+	Info en plus : \ est un caractère d'échappement donc mettre un double \ pour qu'il passe
+
+Pour éxecuter une commande SQL :
+	- Il faut instancier command avec SqlCommand et mettre en argument dans le new (la commande en string, la variable de connection)
+	Syntaxe : SqlCommand command = new SqlCommand("select * from Student",connection);
+
+Code SQL 
+
+	Student :
+		CREATE TABLE [dbo].[Student]
+		(
+			[Id] BIGINT NOT NULL PRIMARY KEY,
+			[Birthdate] DATE NOT NULL,
+			[FullName] VARCHAR(60) NOT NULL,
+			[Remark] VARCHAR(60) NOT NULL
+		)
+	Course :
+		CREATE TABLE [dbo].[Course]
+		(
+			[Id] BIGINT NOT NULL PRIMARY KEY,
+			[Description] VARCHAR(60) NOT NULL
+		)
+
+	StudentCourse :
+		CREATE TABLE [dbo].[StudentCourse]
+		(
+			[StudentId] BIGINT NOT NULL,
+			[CourseId] BIGINT NOT NULL, 
+    			CONSTRAINT [FK_StudentCourse_Student] FOREIGN KEY (StudentId) REFERENCES [Student]([Id]), 
+    			CONSTRAINT [FK_StudentCourse_Course] FOREIGN KEY (CourseId) REFERENCES [Course]([Id]) 
+		)
+
+Code :
+
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Labo1BD
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // il faut instancier avec SqlConnection et aller chercher dans les propriété de la BD le connection string
+            SqlConnection connection = new SqlConnection("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = Labo1; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False");
+                                                                                 // \ est un caractère d'échappement donc mettre un double \ pour qu'il passe
+            connection.Open();
+
+            //SqlCommand command = new SqlCommand("select birthdate from Student",connection);
+            SqlCommand command = new SqlCommand("select FullName, birthdate, Remark from Student", connection);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                /*Student*/
+                Console.WriteLine("{0}\t{1}\t{2}", reader[0], reader[1], reader[2]); 
+                /*StudentCourse ou Course*/
+                //Console.WriteLine("\t{0}\t{1}", reader[0], reader[1]);
+                //Console.WriteLine("\t{0}",reader[0]);
+            }
+            reader.Close();
+            connection.Close();
+
+            System.Console.Read();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
