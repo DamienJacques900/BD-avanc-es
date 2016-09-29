@@ -7,7 +7,7 @@
     <Name>Labo1</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{fc02def4-abbc-4e7e-8b2b-d9f86e830362}</ProjectGuid>
+    <ProjectGuid>{cf611977-34b1-4457-b28c-e6cc11c23742}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -57,11 +57,5 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="Student.sql" />
-    <Build Include="Course.sql" />
-    <Build Include="StudentCourse.sql" />
-    <Build Include="Course_1.sql" />
   </ItemGroup>
 </Project>
