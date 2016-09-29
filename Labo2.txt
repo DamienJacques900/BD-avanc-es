@@ -1,0 +1,21 @@
+C'est le labo 3 d'abord puis le labo2
+
+Nugget : gestionnaire de package de l'environnement dotnet
+
+Solution explorer , clique droit projet  et manage nuget package et aller chercher le entity framework dans le browse
+
+Pour accèder au connection string :
+	- Aller sur SQL server Object explorer
+	- Cliquer sur localBD et aller dans les propriétés et il se trouve dans le connection string
+
+Pour compiler, aller sur le projet et faire build car sinon il va exécuter
+
+Pour créer un projet test unitaire, il faut faire nouveau projet, aller dans test et sélectionner le test unitaire
+
+Pour importer la classe du labo3, juste faire : using Labo3;
+
+Pas mettre de constructeur dans le classe customer
+
+Pour ouvrir le test explorer, il faut aller dans test->windows->test explorer
+
+Pour le WPFClient il faut le mettre au même niveau que labo3 et le reste et ensuite ajouter le projet existant avec add->existing project

@@ -2,7 +2,9 @@ T-SQL :
 
 Créer une BD : 
 	- Aller sur SQL Server objetct explorer
-	- Ajouter une nouvelle table
+	- Aller sur localdb
+	- Aller sur DataBases
+	- Ajouter une nouvelle BD
 
 Créer une table :
 	- Aller dans table et mettre créer new table
