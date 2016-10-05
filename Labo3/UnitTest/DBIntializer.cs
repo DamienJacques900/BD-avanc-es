@@ -14,7 +14,7 @@ namespace UnitTest
         {
             Customer custom1 = new Customer()
             {
-                AccountBalance= 20.5,
+                AccountBalance= 20,
                 AddressLine1 = "Rue Machin",
                 AddressLine2 = "Village Truc",
                 City = "Namur",

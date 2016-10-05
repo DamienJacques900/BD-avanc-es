@@ -1,6 +1,8 @@
 ﻿using Labo3;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +37,7 @@ namespace WPFClient
             _context.Database.Initialize(true);
             _customer = new Customer()
             {
-                AccountBalance = 20.5,
+                AccountBalance = 20,
                 AddressLine1 = "Rue Machin",
                 AddressLine2 = "Village Truc",
                 City = "Namur",
@@ -51,7 +53,20 @@ namespace WPFClient
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            double nouveau_montant = _customer.AccountBalance + (double)MontantAAjouterAuCompte.Value;
+            _customer.AccountBalance = nouveau_montant;
+            SqlConnection connexion = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ConcurrencyDemo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            using (connexion)
+            {
+                connexion.Open();
+
+                SqlCommand command = new SqlCommand("update Customers set [AccountBalance] = @nouveau_montant where [Id] = 1", connexion);
+                command.Parameters.Add("@nouveau_montant", SqlDbType.Float);
+                command.Parameters["@nouveau_montant"].Value = nouveau_montant;
+
+                command.ExecuteNonQuery();
+                connexion.Close();
+            }
         }
     }
 }
