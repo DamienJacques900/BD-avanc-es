@@ -1,0 +1,4 @@
+RowVersion : créer une nouvelle colone dans le table pour indiquer le nombre de mise à jour comme ça on sait quelle était la première etc...
+
+Et après dans le code behind, on regarde si la row version est la même et si c'est le cas alors c'est qu'il n'y a pas eu de modification et on peut
+enregistrer la nouvelle valeur
