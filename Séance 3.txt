@@ -1,0 +1,16 @@
+auto implémenter : get et set non implémenter.
+
+backandfield : on met un set et un get propre.
+
+@ devant un variable dans un string fait qu'on reconnait que c'est une variable
+ exemple : "df qds @nouveau_montant qdfds" , on reconnait que @nouveau_montant est une varai
+
+
+By adding a property you changed the database model, so you need to do another migration. In the Package Manager Console (PMC), enter the following commands:
+
+Add-Migration RowVersion
+Update-Database
+
+Pour accèder au package manager console : Tools-> library Package Manager-> Package manager Console
+
+Ne pas oublier de fermer toute fenêtre concernant la BD avant de faire les test sinon il ne fonctionnerai pas

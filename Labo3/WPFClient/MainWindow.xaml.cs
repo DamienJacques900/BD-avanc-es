@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -35,19 +36,7 @@ namespace WPFClient
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             _context.Database.Initialize(true);
-            _customer = new Customer()
-            {
-                AccountBalance = 20,
-                AddressLine1 = "Rue Machin",
-                AddressLine2 = "Village Truc",
-                City = "Namur",
-                Email = "machin@gmail.com",
-                Id = 1,
-                Name = "Damien",
-                PostCode = "5000",
-                Remark = "Génie",
-            };
-
+            _customer = _context.Customers.ToList().ElementAt(0);//met les valeurs de la BD dans une liste et on prend le première élément. 
             Formulaire.DataContext = _customer;
         }
 
@@ -55,17 +44,13 @@ namespace WPFClient
         {
             double nouveau_montant = _customer.AccountBalance + (double)MontantAAjouterAuCompte.Value;
             _customer.AccountBalance = nouveau_montant;
-            SqlConnection connexion = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ConcurrencyDemo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            using (connexion)
+            try
             {
-                connexion.Open();
-
-                SqlCommand command = new SqlCommand("update Customers set [AccountBalance] = @nouveau_montant where [Id] = 1", connexion);
-                command.Parameters.Add("@nouveau_montant", SqlDbType.Float);
-                command.Parameters["@nouveau_montant"].Value = nouveau_montant;
-
-                command.ExecuteNonQuery();
-                connexion.Close();
+                _context.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException expection)
+            {
+                System.Console.Write(expection);
             }
         }
     }

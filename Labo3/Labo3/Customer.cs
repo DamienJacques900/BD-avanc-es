@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Labo3
         private String addressLine1;
         private String addressLine2;
         private String city;
+        private String country;
         private String email;
         private long id;
         private String name;
@@ -30,6 +32,7 @@ namespace Labo3
                 accountBalance = value;
             }
         }
+
 
         public string AddressLine1
         {
@@ -67,6 +70,19 @@ namespace Labo3
             set
             {
                 city = value;
+            }
+        }
+
+        public string Country
+        {
+            get
+            {
+                return country;
+            }
+
+            set
+            {
+                country = value;
             }
         }
 
@@ -134,6 +150,9 @@ namespace Labo3
                 remark = value;
             }
         }
+
+        [Timestamp] // sera obligé de mettre pour des BD avec accès concurrentiel. C'est le système qui gère. 
+        public byte[] RowVersion { get; set; }
         /*
         public Customer(double accountBalance, String addressLine1, String addressLine2, String city, String email, long id, String name, String postCode, String remark)
         {

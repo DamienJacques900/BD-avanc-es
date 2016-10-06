@@ -18,6 +18,7 @@ namespace UnitTest
                 AddressLine1 = "Rue Machin",
                 AddressLine2 = "Village Truc",
                 City = "Namur",
+                Country = "Belgique",
                 Email = "machin@gmail.com",
                 Id = 1,
                 Name = "Damien",

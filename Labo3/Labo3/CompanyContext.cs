@@ -14,7 +14,7 @@ namespace Labo3
             //@ permet de ne pas devoir mettre des caractère d'échappement
             : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ConcurrencyDemo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
         {
-
+            //constructeur vide
         }
 
     }
