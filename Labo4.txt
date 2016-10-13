@@ -1,0 +1,43 @@
+Labo 4:
+
+Pour modifier le méthode GET de customer, il faut rajouter.Include(c=> c.Customers).ToList().AsQueryable();
+car on renvoie un IQueryable
+
+Pour ajouter avec Fiddler, le faire et mettre un fichier format JSON:
+{
+   Name : "Damien",
+   City :"Lustin"
+}
+
+avec les attributs de customer
+
+Pour modifier quelque chose avec fiddler:
+	
+	- Il faut commencer par faire un GET en précisant celui qu'on veut (ex : http://localhost:2155/api/Customers/3 => ici on prend le 3ème)
+	- Ensuite exécuter, double clique sur le 200 et aller sur raw pour obtenir le script JSON
+	- Ensuite le copier et le coller dans le composer en mettant PUT et modifier ce qu'on veut
+
+Remarque :  A chaque modification, le RowVersion change et donc il faut refaire le GET pour obtenir la nouvelle.
+
+
+Valeurs perdus :
+	- Car à chaque requête c'est une nouvelle instance. Pour empêcher il faut :
+		Il faut persister les ajouts quelque part pour que l'état ne soit pas gérer par l'api 
+
+200 succès
+400 erreur client (requête invalide)
+500 erreur serveur
+
+Routing : permet de déterminer quel controller doit être appelé. 
+
+	Quand ApiController :  	ok() 200
+				created() 201
+				BadRequest() 400
+	permet de dire ce qui ne va pas pour l'http(renvoie méthode http)
+
+Mode de chargement :
+	Lazy loading : charge que quand on a besoin
+
+Retourner entités du modèle EF?
+	Car on peut montrer des infos qu'on ne veut pas montrer et des infos inutiles.
+		
