@@ -1,0 +1,23 @@
+Question 1 : tu ne crées pas de TE sans argument, c'est vrai que c'est mieux pour ce cas là car il n'y a pas d'informations distinctes pour une autre
+TE comme je l'ai fait donc je pense que ta manière de faire est meilleur. 
+
+Question 2 : Pourquoi sans l'index la cardinalité 0-1 serait perdu?
+
+Question 4 et 5 : Oui c'est plus précis mais ça revient au même ^^
+
+Question 9 : tu as mis quoi pour ça?
+
+Question 10 : j'ai juste ça en plus : Date Imm doit être inférieur à Date entrée(VISITE) et Date(DEVIS)
+
+Question 11 : Je vois pas bien ce que tu as mis pour l'explication de la Limite au niveau logique ou physique 
+
+Question 12 : Tu as mis quoi?
+
+Question 14 : j'ai modifié en changant les TA en TE pour pouvoir mettre des cardinalités en 0-2
+
+Question 17 : j'ai fait comme dans le schéma marqueOpen qu'il nous avait donné, c'est juste que j'ai oublié de préciser
+que l'id de capacité c'est aussi ouvrier et typeOpération
+
+Question 20 : je t'avoue aussi que je sais pas trop comment faire ça :s
+
+Question 21 : pour moi j'ai fait le représentation des types spécifiques comme à la page 34 du cours
