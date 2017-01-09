@@ -21,3 +21,5 @@ que l'id de capacité c'est aussi ouvrier et typeOpération
 Question 20 : je t'avoue aussi que je sais pas trop comment faire ça :s
 
 Question 21 : pour moi j'ai fait le représentation des types spécifiques comme à la page 34 du cours
+
+11,14,20
