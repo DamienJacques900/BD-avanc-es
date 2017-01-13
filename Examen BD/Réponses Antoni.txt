@@ -25,4 +25,6 @@ Question 21 : pour moi j'ai fait le représentation des types spécifiques comme à
 11,20
 
 
-Question pas sûr : 9, 23 , 11 point 2, 12, 20
+Question pas sûr : 12
+
+Revoir comment faire troisième forme normal
